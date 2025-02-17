@@ -20,8 +20,6 @@ interface RequestConfig {
 export const useHttp = () => {
   const [loadingStatus, setLoadingStatus] = useState<string>("idle");
 
-  const aaa = {};
-
   // если в первоначальное значение нужно записать null, то пишем через или |
   //   const [error, setError] = useState<string | null>(null);
   //   если у нас есть интерфейс ошибки MyError, то можем обмануть компилятор, но берем ответственность на себя
