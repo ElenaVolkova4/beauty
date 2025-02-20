@@ -1,25 +1,25 @@
 import { useHttp } from "../hooks/http.hook";
 import {
+  IAppointment,
   ActiveAppointment,
-  IActiveAppointment,
-} from "../shared/interfaces/activeAppointment.interface";
-import { IAppointment } from "../shared/interfaces/appointment.interface";
+} from "../shared/interfaces/appointment.interface";
+
 import hasRequiredFields from "../utils/hasRequiredFields";
 
 const requiredFields = ["id", "date", "name", "service", "phone", "canceled"];
+// const requiredFields = ["canceled", "date", "id", "name", "phone", "service"];
 
 const useAppointmentService = () => {
   const { loadingStatus, request } = useHttp();
 
-  const _apiBase = "http://localhost:3001/appointment";
+  const _apiBase = "http://localhost:3001/appointments";
 
   // проверка полей
   const getAllAppointments = async (): Promise<IAppointment[]> => {
     const res = await request({ url: _apiBase });
-
     if (
       res.every((item: IAppointment) => {
-        hasRequiredFields(item, requiredFields);
+        return hasRequiredFields(item, requiredFields);
       })
     ) {
       return res;
@@ -28,7 +28,7 @@ const useAppointmentService = () => {
     }
   };
 
-  const getAllActiveAppointments = async (): Promise<IActiveAppointment[]> => {
+  const getAllActiveAppointments = async (): Promise<ActiveAppointment[]> => {
     const res = await request({ url: _apiBase });
     const base = await getAllAppointments();
     const transformed: ActiveAppointment[] = base.map((item) => {
@@ -46,3 +46,5 @@ const useAppointmentService = () => {
 
   return { loadingStatus, getAllAppointments, getAllActiveAppointments };
 };
+
+export default useAppointmentService;
