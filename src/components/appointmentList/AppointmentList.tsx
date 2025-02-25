@@ -3,21 +3,31 @@ import { AppointmentContext } from "../../context/appointments/AppointmentsConte
 import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
 
 function AppointmentList() {
-  const { allAppointments, getApointments } = useContext(AppointmentContext);
+  const {
+    // allAppointments,
+    // getApointments,
+    avtiveAppointments,
+    getActiveApointments,
+  } = useContext(AppointmentContext);
 
   useEffect(() => {
-    getApointments();
+    // getApointments();
+    getActiveApointments(); // получаем активные записи
   }, []);
 
-  console.log("allAppointments", allAppointments);
+  //   console.log("avtiveAppointments", avtiveAppointments);
 
   return (
     <>
-      {allAppointments[0] ? allAppointments[0].name : null}
+      {avtiveAppointments.map((item) => (
+        <AppointmentItem data={item} />
+      ))}
+
+      {/* {allAppointments[0] ? allAppointments[0].name : null}
+      
       <AppointmentItem />
       <AppointmentItem />
-      <AppointmentItem />
-      <AppointmentItem />
+      <AppointmentItem /> */}
     </>
   );
 }
