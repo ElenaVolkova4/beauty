@@ -3,6 +3,8 @@ import { useCallback, useState } from "react";
 // заранее известные значения, поэтому type
 type HTTPRequestMethods = "GET" | "POST" | "PATCH" | "DELETE";
 
+export type loadingStatusOptoins = "idle" | "loading" | "error";
+
 // заголовки - это объект, но неизвестно сколько может быть ключей, так что делаем interface через key или type через Record
 interface HTTPHeaders {
   [key: string]: string;
@@ -18,7 +20,8 @@ interface RequestConfig {
 }
 
 export const useHttp = () => {
-  const [loadingStatus, setLoadingStatus] = useState<string>("idle");
+  const [loadingStatus, setLoadingStatus] =
+    useState<loadingStatusOptoins>("idle");
 
   // если в первоначальное значение нужно записать null, то пишем через или |
   //   const [error, setError] = useState<string | null>(null);

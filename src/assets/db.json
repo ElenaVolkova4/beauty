@@ -2,7 +2,7 @@
   "appointments": [
     {
       "id": 1,
-      "date": "2023-07-01T12:10",
+      "date": "2025-07-01T12:10",
       "name": "Alex Smith",
       "service": "Manicure",
       "phone": "+1 948 945 344",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "date": "2023-06-01T15:15",
+      "date": "2025-06-01T15:15",
       "name": "Sam Smith",
       "service": "Pedicure",
       "phone": "+1 746 235 890",
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "date": "2023-07-02T09:00",
+      "date": "2025-07-02T09:00",
       "name": "Alex Collson",
       "service": "Manicure",
       "phone": "+1 238 545 045",
@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "date": "2023-07-10T09:10",
+      "date": "2025-07-10T09:10",
       "name": "Kim Paul",
       "service": "Cleaning",
       "phone": "+1 928 345 356",
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "date": "2023-06-16T10:00",
+      "date": "2025-06-16T10:00",
       "name": "Innes Olaf",
       "service": "Haircut",
       "phone": "+1 458 895 888",
@@ -42,7 +42,7 @@
     },
     {
       "id": 6,
-      "date": "2023-08-01T14:00",
+      "date": "2025-08-01T14:00",
       "name": "Yan Somer",
       "service": "Haircut",
       "phone": "+1 678 995 484",

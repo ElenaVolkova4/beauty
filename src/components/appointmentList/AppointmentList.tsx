@@ -1,33 +1,40 @@
 import { useContext, useEffect } from "react";
 import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
 import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
+import Spinner from "../spinner/Spinner";
+import Error from "../error/Error";
 
 function AppointmentList() {
-  const {
-    // allAppointments,
-    // getApointments,
-    avtiveAppointments,
-    getActiveApointments,
-  } = useContext(AppointmentContext);
+  const { appointmentLoadingStatus, avtiveAppointments, getActiveApointments } =
+    useContext(AppointmentContext);
+
+  // const { loadingStatus, getAllAppointments, getAllActiveAppointments } =
+  // useAppointmentService();
 
   useEffect(() => {
-    // getApointments();
     getActiveApointments(); // получаем активные записи
   }, []);
 
-  //   console.log("avtiveAppointments", avtiveAppointments);
+  console.log("appointmentLoadingStatus", appointmentLoadingStatus);
+
+  if (appointmentLoadingStatus === "loading") {
+    return <Spinner />;
+  } else if (appointmentLoadingStatus === "error") {
+    return (
+      <>
+        <Error />
+        <button className="schedule__reload" onClick={getActiveApointments}>
+          Try to reload
+        </button>
+      </>
+    );
+  }
 
   return (
     <>
       {avtiveAppointments.map((item) => (
-        <AppointmentItem data={item} />
+        <AppointmentItem {...item} key={item.id} />
       ))}
-
-      {/* {allAppointments[0] ? allAppointments[0].name : null}
-      
-      <AppointmentItem />
-      <AppointmentItem />
-      <AppointmentItem /> */}
     </>
   );
 }

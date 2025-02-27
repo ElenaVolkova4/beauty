@@ -1,20 +1,21 @@
 // AppointmentsContext
 
 import React, { createContext, useReducer } from "react";
-import reducer, { IInitialState } from "./reducer";
+import reducer, { IAppointmentState } from "./reducer";
 import useAppointmentService from "../../services/AppointmentServices";
 import { ActionsTypes } from "./actions";
 
-const initialState: IInitialState = {
+const initialState: IAppointmentState = {
   allAppointments: [],
   avtiveAppointments: [],
+  appointmentLoadingStatus: "idle",
 };
 
 interface ProviderProps {
   children: React.ReactNode;
 }
 
-interface AppointmentContextValue extends IInitialState {
+interface AppointmentContextValue extends IAppointmentState {
   getApointments: () => void;
   getActiveApointments: () => void;
 }
@@ -22,6 +23,7 @@ interface AppointmentContextValue extends IInitialState {
 export const AppointmentContext = createContext<AppointmentContextValue>({
   allAppointments: initialState.allAppointments,
   avtiveAppointments: initialState.avtiveAppointments,
+  appointmentLoadingStatus: initialState.appointmentLoadingStatus,
   getApointments: () => {},
   getActiveApointments: () => {},
 });
@@ -32,9 +34,12 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
   const { loadingStatus, getAllAppointments, getAllActiveAppointments } =
     useAppointmentService();
 
+  // console.log("loadingStatus", loadingStatus);
+
   const value: AppointmentContextValue = {
     allAppointments: state.allAppointments,
     avtiveAppointments: state.avtiveAppointments,
+    appointmentLoadingStatus: loadingStatus,
     getApointments: () => {
       // получение данных и обновление через dispatch
       getAllAppointments().then((data) =>
