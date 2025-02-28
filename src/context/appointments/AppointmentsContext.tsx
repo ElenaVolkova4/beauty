@@ -34,8 +34,6 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
   const { loadingStatus, getAllAppointments, getAllActiveAppointments } =
     useAppointmentService();
 
-  // console.log("loadingStatus", loadingStatus);
-
   const value: AppointmentContextValue = {
     allAppointments: state.allAppointments,
     avtiveAppointments: state.avtiveAppointments,

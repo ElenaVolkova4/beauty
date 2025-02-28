@@ -1,8 +1,11 @@
 import { useContext, useEffect } from "react";
-import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
+
 import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
 import Spinner from "../spinner/Spinner";
 import Error from "../error/Error";
+import CancelModal from "../modal/CancelModal";
+
+import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
 
 function AppointmentList() {
   const { appointmentLoadingStatus, avtiveAppointments, getActiveApointments } =
@@ -14,8 +17,6 @@ function AppointmentList() {
   useEffect(() => {
     getActiveApointments(); // получаем активные записи
   }, []);
-
-  console.log("appointmentLoadingStatus", appointmentLoadingStatus);
 
   if (appointmentLoadingStatus === "loading") {
     return <Spinner />;
