@@ -8,7 +8,9 @@ import { Optional } from "utility-types";
 // type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 // либо можно подключить библиотеку utility-types, в которой много вариантов
 
-type AppointmentProps = Optional<IAppointment, "canceled">;
+type AppointmentProps = Optional<IAppointment, "canceled"> & {
+  openModal: (state: boolean) => void;
+};
 
 function AppointmentItem({
   id,
@@ -17,6 +19,7 @@ function AppointmentItem({
   service,
   phone,
   canceled,
+  openModal,
 }: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 
@@ -59,7 +62,12 @@ function AppointmentItem({
             <span>Time left:</span>
             <span className="appointment__timer">{timeLeft}</span>
           </div>
-          <button className="appointment__cancel">Cancel</button>
+          <button
+            className="appointment__cancel"
+            onClick={() => openModal(true)}
+          >
+            Cancel
+          </button>
         </>
       ) : null}
 
