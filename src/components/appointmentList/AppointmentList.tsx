@@ -15,6 +15,7 @@ function AppointmentList() {
   // useAppointmentService();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedId, selectId] = useState(0);
 
   useEffect(() => {
     getActiveApointments(); // получаем активные записи
@@ -36,7 +37,12 @@ function AppointmentList() {
   return (
     <>
       {avtiveAppointments.map((item) => (
-        <AppointmentItem {...item} key={item.id} openModal={setIsOpen} />
+        <AppointmentItem
+          {...item}
+          key={item.id}
+          openModal={setIsOpen}
+          selectId={() => selectId(item.id)}
+        />
       ))}
 
       {isOpen ? <CancelModal handleClose={setIsOpen} /> : null}

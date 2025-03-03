@@ -10,6 +10,7 @@ import { Optional } from "utility-types";
 
 type AppointmentProps = Optional<IAppointment, "canceled"> & {
   openModal: (state: boolean) => void;
+  selectId: () => void;
 };
 
 function AppointmentItem({
@@ -20,6 +21,7 @@ function AppointmentItem({
   phone,
   canceled,
   openModal,
+  selectId,
 }: AppointmentProps) {
   const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 
@@ -82,7 +84,10 @@ function AppointmentItem({
           </div>
           <button
             className="appointment__cancel"
-            onClick={() => openModal(true)}
+            onClick={() => {
+              openModal(true);
+              selectId();
+            }}
           >
             Cancel
           </button>
