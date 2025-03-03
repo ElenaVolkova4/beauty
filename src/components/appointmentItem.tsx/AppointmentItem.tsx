@@ -47,6 +47,24 @@ function AppointmentItem({
     };
   }, [date]);
 
+  console.log("Начало");
+
+  setTimeout(() => {
+    console.log("SetTimeout 1");
+  }, 0);
+
+  fetch("http://localhost:3001/appointments")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Данные получены:", data);
+    });
+
+  setTimeout(() => {
+    console.log("SetTimeout 2");
+  }, 0);
+
+  console.log("Конец");
+
   return (
     <div className="appointment">
       <div className="appointment__info">
