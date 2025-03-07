@@ -13,6 +13,20 @@ interface IModalProps {
 function CancelModal({ handleClose, selectedId, isOpen }: IModalProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
 
+  // закрытие модального окна по escape
+  const closeOnEscapeKey = (event: KeyboardEvent): void => {
+    if (event.code === "Escape") {
+      handleClose(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("keydown", closeOnEscapeKey);
+    return () => {
+      document.body.addEventListener("keydown", closeOnEscapeKey);
+    };
+  }, [handleClose]);
+
   return (
     <Portal>
       <CSSTransition
