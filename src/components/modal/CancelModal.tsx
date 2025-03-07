@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 
 import Portal from "../portal/portal";
 import "./modal.scss";
-import { CSSTransition } from "react-transition-group";
 
 interface IModalProps {
   handleClose: (state: boolean) => void;
