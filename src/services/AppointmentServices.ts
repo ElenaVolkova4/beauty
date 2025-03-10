@@ -16,6 +16,7 @@ const useAppointmentService = () => {
   const _apiBase = "http://localhost:3001/appointments";
 
   // проверка полей
+  /** получение всех активных записей */
   const getAllAppointments = async (): Promise<IAppointment[]> => {
     const res = await request({ url: _apiBase });
     if (
@@ -29,6 +30,7 @@ const useAppointmentService = () => {
     }
   };
 
+  /** получение всех активных записей */
   const getAllActiveAppointments = async (): Promise<ActiveAppointment[]> => {
     const res = await request({ url: _apiBase });
     const base = await getAllAppointments();
@@ -50,7 +52,21 @@ const useAppointmentService = () => {
     return transformed;
   };
 
-  return { loadingStatus, getAllAppointments, getAllActiveAppointments };
+  /** смена статуса записи */
+  const cancelOneAppointment = async (id: number) => {
+    return await request({
+      url: `${_apiBase}/${id}`,
+      method: "PATCH",
+      body: JSON.stringify({ cancel: true }),
+    });
+  };
+
+  return {
+    loadingStatus,
+    getAllAppointments,
+    getAllActiveAppointments,
+    cancelOneAppointment,
+  };
 };
 
 export default useAppointmentService;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Portal from "../portal/portal";
 import "./modal.scss";
@@ -12,6 +12,14 @@ interface IModalProps {
 
 function CancelModal({ handleClose, selectedId, isOpen }: IModalProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
+
+  const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
+  const [cancelStatus, setCancelStatus] = useState<boolean | null>(null);
+
+  /** при нажатии на ОК кнопка блокироуется, чтобы пользователь не смог нажать еще раз */
+  const handleCancelAppointment = (id: number) => {
+    setBtnDisabled(true);
+  };
 
   // закрытие модального окна по escape
   const closeOnEscapeKey = (event: KeyboardEvent): void => {
