@@ -16,7 +16,7 @@ function CancelModal({ handleClose, selectedId, isOpen }: IModalProps) {
   const [btnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [cancelStatus, setCancelStatus] = useState<boolean | null>(null);
 
-  /** при нажатии на ОК кнопка блокироуется, чтобы пользователь не смог нажать еще раз */
+  /** при нажатии на ОК кнопка блокируется, чтобы пользователь не смог нажать еще раз */
   const handleCancelAppointment = (id: number) => {
     setBtnDisabled(true);
   };
