@@ -1,8 +1,9 @@
-import dayjs from "dayjs";
-import { IAppointment } from "../../shared/interfaces/appointment.interface";
-import "./appointmentItem.scss";
 import { useEffect, memo, useState } from "react";
 import { Optional } from "utility-types";
+import dayjs from "dayjs";
+
+import { IAppointment } from "../../shared/interfaces/appointment.interface";
+import "./appointmentItem.scss";
 
 // создаем сами тип, в котором одно поле "Отменен" будет необязательное
 // type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
