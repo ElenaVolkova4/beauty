@@ -6,7 +6,7 @@
       "name": "Alex Smith",
       "service": "Manicure",
       "phone": "+7 948 945 344",
-      "canceled": false
+      "canceled": true
     },
     {
       "id": 2,
@@ -14,19 +14,19 @@
       "name": "Sam Smith",
       "service": "Pedicure",
       "phone": "+7 746 235 890",
-      "canceled": false
-    },
-    {
-      "id": 3,
-      "date": "2025-07-02T09:00",
-      "name": "Alex Collson",
-      "service": "Manicure",
-      "phone": "+7 238 545 045",
       "canceled": true
     },
     {
+      "id": 3,
+      "date": "2025-03-15T17:00",
+      "name": "Alex Collson",
+      "service": "Manicure",
+      "phone": "+7 238 545 045",
+      "canceled": false
+    },
+    {
       "id": 4,
-      "date": "2025-07-10T09:10",
+      "date": "2025-03-13T12:00",
       "name": "Kim Paul",
       "service": "Cleaning",
       "phone": "+7 928 345 356",
@@ -34,7 +34,7 @@
     },
     {
       "id": 5,
-      "date": "2025-06-16T10:00",
+      "date": "2025-03-12T14:28",
       "name": "Innes Olaf",
       "service": "Haircut",
       "phone": "+7 458 895 888",
@@ -42,15 +42,15 @@
     },
     {
       "id": 6,
-      "date": "2025-08-01T14:00",
+      "date": "2025-03-12T14:29",
       "name": "Yan Somer",
       "service": "Haircut",
       "phone": "+7 678 995 484",
-      "canceled": true
+      "canceled": false
     },
     {
       "id": 7,
-      "date": "2023-07-10T13:00",
+      "date": "2025-03-10T13:00",
       "name": "John Cena",
       "service": "Beard",
       "phone": "+7 333 835 438",

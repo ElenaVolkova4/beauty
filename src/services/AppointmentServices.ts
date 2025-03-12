@@ -17,7 +17,7 @@ const useAppointmentService = () => {
   const _apiBase = "http://localhost:3001/appointments";
 
   // проверка полей
-  /** получение всех активных записей */
+  /** получение всех записей */
   const getAllAppointments = async (): Promise<IAppointment[]> => {
     const res = await request({ url: _apiBase });
     if (
@@ -58,7 +58,7 @@ const useAppointmentService = () => {
     return await request({
       url: `${_apiBase}/${id}`,
       method: "PATCH",
-      body: JSON.stringify({ cancel: true }),
+      body: JSON.stringify({ canceled: true }),
     });
   };
 

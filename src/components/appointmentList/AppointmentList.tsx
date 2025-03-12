@@ -8,8 +8,11 @@ import CancelModal from "../modal/CancelModal";
 import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
 
 function AppointmentList() {
-  const { appointmentLoadingStatus, avtiveAppointments, getActiveApointments } =
-    useContext(AppointmentContext);
+  const {
+    appointmentLoadingStatus,
+    avtiveAppointments,
+    getActiveAppointments,
+  } = useContext(AppointmentContext);
 
   // const { loadingStatus, getAllAppointments, getAllActiveAppointments } =
   // useAppointmentService();
@@ -18,7 +21,7 @@ function AppointmentList() {
   const [selectedId, selectId] = useState(0);
 
   useEffect(() => {
-    getActiveApointments(); // получаем активные записи
+    getActiveAppointments(); // получаем активные записи
   }, []);
 
   // закешировали открытие модального окна, чтобы не было лишнего перерендера
@@ -33,7 +36,7 @@ function AppointmentList() {
     return (
       <>
         <Error />
-        <button className="schedule__reload" onClick={getActiveApointments}>
+        <button className="schedule__reload" onClick={getActiveAppointments}>
           Try to reload
         </button>
       </>
@@ -43,7 +46,12 @@ function AppointmentList() {
   return (
     <>
       {avtiveAppointments.map((item) => (
-        <AppointmentItem {...item} key={item.id} openModal={handleOpenModal} />
+        <AppointmentItem
+          {...item}
+          key={item.id}
+          openModal={handleOpenModal}
+          getActiveAppointments={getActiveAppointments}
+        />
       ))}
 
       <CancelModal

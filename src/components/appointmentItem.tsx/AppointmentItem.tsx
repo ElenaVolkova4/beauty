@@ -11,6 +11,7 @@ import "./appointmentItem.scss";
 
 type AppointmentProps = Optional<IAppointment, "canceled"> & {
   openModal: (state: number) => void;
+  getActiveAppointments: () => void;
 };
 
 const AppointmentItem = memo(
@@ -22,6 +23,7 @@ const AppointmentItem = memo(
     phone,
     canceled,
     openModal,
+    getActiveAppointments,
   }: AppointmentProps) => {
     const formattedDate = dayjs(date).format("DD/MM/YYYY HH:mm");
 
@@ -34,20 +36,29 @@ const AppointmentItem = memo(
         }`
       );
 
-      // каждые 60 сек цифры будут обновляться
-      const intervalID = setInterval(() => {
-        changeTimeLeft(
-          `${dayjs(date).diff(undefined, "h")}:${
-            dayjs(date).diff(undefined, "m") % 60
-          }`
-        );
+      // каждые 60 сек цифры будут обновляться до времени 0:0, потом список будет перерисовываться
+      const intervalId = setInterval(() => {
+        if (dayjs(date).diff(undefined, "m") <= 0) {
+          if (getActiveAppointments) {
+            getActiveAppointments();
+          }
+          clearInterval(intervalId);
+        } else {
+          changeTimeLeft(
+            `${dayjs(date).diff(undefined, "h")}:${
+              dayjs(date).diff(undefined, "m") % 60
+            }`
+          );
+        }
       }, 60000);
 
       //отписываемся от таймера
       return () => {
-        clearInterval(intervalID);
+        clearInterval(intervalId);
       };
     }, [date]);
+
+    console.log("timeLeft", timeLeft);
 
     return (
       <div className="appointment">

@@ -17,7 +17,7 @@ interface ProviderProps {
 
 interface AppointmentContextValue extends IAppointmentState {
   getApointments: () => void;
-  getActiveApointments: () => void;
+  getActiveAppointments: () => void;
 }
 
 export const AppointmentContext = createContext<AppointmentContextValue>({
@@ -25,7 +25,7 @@ export const AppointmentContext = createContext<AppointmentContextValue>({
   avtiveAppointments: initialState.avtiveAppointments,
   appointmentLoadingStatus: initialState.appointmentLoadingStatus,
   getApointments: () => {},
-  getActiveApointments: () => {},
+  getActiveAppointments: () => {},
 });
 
 const AppointmentContextProvider = ({ children }: ProviderProps) => {
@@ -48,7 +48,7 @@ const AppointmentContextProvider = ({ children }: ProviderProps) => {
       );
     },
 
-    getActiveApointments: () => {
+    getActiveAppointments: () => {
       getAllActiveAppointments().then((data) =>
         dispatch({
           type: ActionsTypes.SET_ACTIVE_APPOINTMENTS,
