@@ -56,7 +56,7 @@ function CancelModal({ handleClose, selectedId, isOpen }: IModalProps) {
     return () => {
       document.body.addEventListener("keydown", closeOnEscapeKey);
     };
-  }, [handleClose]);
+  }, [handleClose, cancelStatus]);
 
   return (
     <Portal>
