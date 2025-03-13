@@ -7,6 +7,7 @@ import CancelModal from "../modal/CancelModal";
 
 import { AppointmentContext } from "../../context/appointments/AppointmentsContext";
 
+/** Компонент списка записей */
 function AppointmentList() {
   const {
     appointmentLoadingStatus,

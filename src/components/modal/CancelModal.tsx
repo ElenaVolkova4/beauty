@@ -12,6 +12,7 @@ interface IModalProps {
   isOpen: boolean;
 }
 
+/** Модальное окно отмены записи */
 function CancelModal({ handleClose, selectedId, isOpen }: IModalProps) {
   const { getActiveAppointments } = useContext(AppointmentContext);
 
