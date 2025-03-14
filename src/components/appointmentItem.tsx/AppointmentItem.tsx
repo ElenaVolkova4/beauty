@@ -59,8 +59,6 @@ const AppointmentItem = memo(
       };
     }, [date]);
 
-    console.log("timeLeft", timeLeft);
-
     return (
       <div className="appointment">
         <div className="appointment__info">

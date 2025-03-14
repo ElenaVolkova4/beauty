@@ -15,9 +15,6 @@ function AppointmentList() {
     getActiveAppointments,
   } = useContext(AppointmentContext);
 
-  // const { loadingStatus, getAllAppointments, getAllActiveAppointments } =
-  // useAppointmentService();
-
   const [isOpen, setIsOpen] = useState(false);
   const [selectedId, selectId] = useState(0);
 

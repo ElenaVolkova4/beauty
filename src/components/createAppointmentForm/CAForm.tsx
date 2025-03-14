@@ -6,7 +6,7 @@ import { AppointmentContext } from "../../context/appointments/AppointmentsConte
 
 import "./caform.scss";
 
-/** Компонент создания новой записи (форма) */
+/** Компонент Форма для создания новой записи */
 function CAForm() {
   const { createNewAppointment } = useAppointmentService();
   const { getActiveAppointments } = useContext(AppointmentContext);
@@ -30,10 +30,6 @@ function CAForm() {
     setCreationStatus(true);
 
     createNewAppointment(formData)
-      // createNewAppointment({
-      //   ...formData,
-      //   date: dayjs(formData.date).format("YYYY-MM-DDTHH:mm"),
-      // })
       .then(() => {
         setFormData({
           id: 0,
