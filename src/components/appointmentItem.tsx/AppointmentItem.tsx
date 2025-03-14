@@ -14,6 +14,7 @@ type AppointmentProps = Optional<IAppointment, "canceled"> & {
   getActiveAppointments: () => void;
 };
 
+/** Компонент карточки одной записи */
 const AppointmentItem = memo(
   ({
     id,

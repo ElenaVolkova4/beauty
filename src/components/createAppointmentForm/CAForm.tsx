@@ -6,6 +6,7 @@ import { AppointmentContext } from "../../context/appointments/AppointmentsConte
 
 import "./caform.scss";
 
+/** Компонент создания новой записи (форма) */
 function CAForm() {
   const { createNewAppointment } = useAppointmentService();
   const { getActiveAppointments } = useContext(AppointmentContext);
