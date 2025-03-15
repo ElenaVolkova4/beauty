@@ -19,15 +19,17 @@ function CAForm() {
   const { createNewAppointment } = useAppointmentService();
   const { getActiveAppointments } = useContext(AppointmentContext);
 
-  // данные формы
-  const [formData, setFormData] = useState<IAppointment>({
+  const initialState: IAppointment = {
     id: 0,
     date: "",
     name: "",
     service: "",
     phone: "",
     canceled: false,
-  });
+  };
+
+  // данные формы
+  const [formData, setFormData] = useState<IAppointment>(initialState);
 
   // для блокировки кнопки Create при отправке формы
   const [creationStatus, setCreationStatus] = useState<boolean>(false);
@@ -39,14 +41,7 @@ function CAForm() {
 
     createNewAppointment(formData)
       .then(() => {
-        setFormData({
-          id: 0,
-          date: "",
-          name: "",
-          service: "",
-          phone: "",
-          canceled: false,
-        });
+        setFormData(initialState);
         setCreationStatus(false);
         getActiveAppointments();
       })
